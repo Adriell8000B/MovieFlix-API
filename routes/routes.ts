@@ -12,9 +12,7 @@ export class Router implements IRouter {
     }
 
     setupRouting() {
-        this.express.get("/")
-
-        this.express.get("/movies", async (_req, res) => {
+        this.express.get("/", async (_req, res) => {
             try {
                 const movies = await this.databaseController.getMovies()
                 if (movies != null) {
