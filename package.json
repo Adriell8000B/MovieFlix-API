@@ -1,5 +1,5 @@
 {
-  "name": "ts",
+  "name": "MovieFlix-API",
   "version": "1.0.0",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "tsx /src/index.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "Adriell8000B",
   "license": "ISC",
   "description": "",
   "devDependencies": {
@@ -16,13 +16,11 @@
     "@types/express": "^5.0.0",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "mongoose": "^8.11.0",
     "prisma": "^6.4.1",
     "ts-node": "^10.9.2",
     "tsc": "^2.0.4",
-    "typescript": "^5.8.2"
-  },
-  "dependencies": {
+    "typescript": "^5.8.2",
     "@prisma/client": "^6.4.1"
-  }
+  },
+  "dependencies": {}
 }
