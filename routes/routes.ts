@@ -24,5 +24,9 @@ export class Router implements IRouter {
                 res.status(500).send(`Error fetching movies: ${error}`)
             }
         })
+
+        this.express.get("/keepalive", (_req, res) => {
+            res.send("Look mom,  i did it!!")
+        })
     }
 }
