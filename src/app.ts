@@ -15,7 +15,7 @@ export class App {
         const database = new MDatabase()
         this.express = express()
         this.port = 8080
-        this.middlewares = new Middlewares(this.express, [], {origin: "irineu"})
+        this.middlewares = new Middlewares(this.express, [], {origin: "https://movie-flix-dusky.vercel.app"})
         this.databaseController = new CDatabase(database)
         this.routing = new Router(this.express, this.databaseController)
         this.init()
