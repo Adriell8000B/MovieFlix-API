@@ -10,25 +10,29 @@ export class Middlewares {
         this.express = express
         this.middlewares = middlewares
         this.corsOptions = options || {}
-        this.setupMiddlewares()
     }
 
-    private setupMiddlewares() {
+    public setupMiddlewares() {
         if(Object.keys(this.corsOptions).length > 0) {
             this.express.use(cors(this.corsOptions))
         }
 
-        this.middlewares.forEach((middleware) => { this.express.use(middleware) })
-        this.express.use(express.json())
-        this.express.use(express.urlencoded({extended: true}))
+        if(this.middlewares.length > 0) {
+            this.middlewares.forEach((middleware) => {
+                this.express.use(middleware)
+            })
+        }
     }
 
     public getExpress() {
         return this.express
     }
 
-    public addMiddleware(middleware: express.RequestHandler) {
-        this.middlewares.push(middleware)
-        this.express.use(middleware)
+    public addMiddlewares(middleware: express.RequestHandler[]) {
+        if(middleware) {
+            middleware.forEach((middlewares) => {
+                this.middlewares.push(middlewares)
+            })
+        }
     }
 }
