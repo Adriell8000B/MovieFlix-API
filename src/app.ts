@@ -16,7 +16,11 @@ export class App {
         const database = new MDatabase()
         this.express = express()
         this.port = 8080
-        this.middlewares = new Middlewares(this.express, [], { origin: "https://movie-flix-dusky.vercel.app" })
+        this.middlewares = new Middlewares(this.express, [helmet(), express.json(), express.urlencoded()],
+        { origin: "https://movie-flix-dusky.vercel.app",
+            methods: ["GET"],
+            allowedHeaders: ""
+        })
         this.databaseController = new CDatabase(database)
         this.routing = new Router(this.express, this.databaseController)
         this.init()
@@ -24,10 +28,9 @@ export class App {
     }
     
     private init() {
-        this.databaseController.connectDatabase()
-        this.routing.setupRouting()
-        this.middlewares.addMiddlewares([helmet(), express.json(), express.urlencoded()])
         this.middlewares.setupMiddlewares()
+        this.routing.setupRouting()
+        this.databaseController.connectDatabase()
     }
 
     private listen() {

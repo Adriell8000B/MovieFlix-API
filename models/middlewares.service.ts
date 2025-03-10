@@ -27,12 +27,4 @@ export class Middlewares {
     public getExpress() {
         return this.express
     }
-
-    public addMiddlewares(middleware: express.RequestHandler[]) {
-        if(middleware) {
-            middleware.forEach((middlewares) => {
-                this.middlewares.push(middlewares)
-            })
-        }
-    }
 }
