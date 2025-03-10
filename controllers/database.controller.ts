@@ -1,12 +1,9 @@
-import { json } from "express"
 import { IDatabase } from "../interfaces/interfaces"
 
 export class CDatabase implements IDatabase {
     private database: IDatabase
 
-    constructor(database: IDatabase) {
-        this.database = database
-    }
+    constructor(database: IDatabase) { this.database = database }
 
     async connectDatabase() {
         try {

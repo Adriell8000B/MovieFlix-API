@@ -27,6 +27,7 @@ export class App {
         this.databaseController.connectDatabase()
         this.routing.setupRouting()
         this.middlewares.addMiddlewares([helmet(), express.json(), express.urlencoded()])
+        this.middlewares.setupMiddlewares()
     }
 
     private listen() {
