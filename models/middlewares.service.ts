@@ -1,30 +1,23 @@
 import express from "express"
-import cors, { CorsOptions } from "cors"
+import { IMiddlewares } from "../interfaces/interfaces"
 
-export class Middlewares {
-    private express: express.Application
-    private middlewares: express.RequestHandler[]
-    private corsOptions: cors.CorsOptions
+export class Middlewares implements IMiddlewares {
+    private _express: express.Application
+    private _middlewares: express.RequestHandler[]
 
-    constructor(express: express.Application, middlewares: express.RequestHandler[] = [], options?: CorsOptions) {
-        this.express = express
-        this.middlewares = middlewares
-        this.corsOptions = options || {}
+    constructor(
+        express: express.Application,
+        middlewares: express.RequestHandler[]
+    ) {
+        this._express = express
+        this._middlewares = middlewares
     }
 
     public setupMiddlewares() {
-        if(Object.keys(this.corsOptions).length > 0) {
-            this.express.use(cors(this.corsOptions))
-        }
-
-        if(this.middlewares.length > 0) {
-            this.middlewares.forEach((middleware) => {
-                this.express.use(middleware)
+        if(this._middlewares.length > 0) {
+            this._middlewares.forEach((middleware) => {
+                this._express.use(middleware)
             })
         }
-    }
-
-    public getExpress() {
-        return this.express
     }
 }

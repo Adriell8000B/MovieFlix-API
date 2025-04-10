@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client"
 import { IDatabase } from "../interfaces/interfaces"
 
-export class MDatabase implements IDatabase {
+export class DatabaseModel implements IDatabase {
     private prisma: PrismaClient
 
     constructor() {

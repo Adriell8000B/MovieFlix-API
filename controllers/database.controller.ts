@@ -1,13 +1,13 @@
 import { IDatabase } from "../interfaces/interfaces"
 
-export class CDatabase implements IDatabase {
-    private database: IDatabase
+export class DatabaseController implements IDatabase {
+    private _databaseModel: IDatabase
 
-    constructor(database: IDatabase) { this.database = database }
+    constructor(databaseModel: IDatabase) { this._databaseModel = databaseModel }
 
     async connectDatabase() {
         try {
-            const response = await this.database.connectDatabase()
+            const response = await this._databaseModel.connectDatabase()
             console.log("Look mom, it works :)")
             return response
         } catch(error) { console.log(`Couldn't connect to database: ${error}`) }
@@ -15,7 +15,7 @@ export class CDatabase implements IDatabase {
 
     async getMovies() {
         try {
-            const response = await this.database.getMovies()
+            const response = await this._databaseModel.getMovies()
             return response
         } catch(error) { console.log(`Couldn't get movies: ${error}`) }
     }

@@ -1,41 +1,39 @@
 import express from "express"
-import helmet from "helmet"
-import { Middlewares } from "../models/middlewares.service"
-import { CDatabase } from "../controllers/database.controller"
-import { MDatabase } from "../models/database.service"
-import { Router } from "../routes/routes"
+import { IMiddlewares } from "../interfaces/interfaces"
+import { IDatabase } from "../interfaces/interfaces"
+import { IRouter } from "../interfaces/interfaces"
 
 export class App {
-    private express: express.Application
-    private port: Number
-    private middlewares: Middlewares
-    private databaseController: CDatabase
-    private routing: Router
+    private _express: express.Application
+    private _PORT: Number
+    private _middlewares: IMiddlewares
+    private _databaseController: IDatabase
+    private _router: IRouter
 
-    constructor() {
-        const database = new MDatabase()
-        this.express = express()
-        this.port = 8080
-        this.middlewares = new Middlewares(this.express, [helmet(), express.json(), express.urlencoded()],
-        { origin: "https://movie-flix-dusky.vercel.app",
-            methods: ["GET"],
-            allowedHeaders: ""
-        })
-        this.databaseController = new CDatabase(database)
-        this.routing = new Router(this.express, this.databaseController)
-        this.init()
-        this.listen()
-    }
-    
-    private init() {
-        this.middlewares.setupMiddlewares()
-        this.routing.setupRouting()
-        this.databaseController.connectDatabase()
+    constructor(
+        express: express.Application,
+        PORT: number,
+        middlewares: IMiddlewares,
+        databaseController: IDatabase,
+        router: IRouter
+    ) {
+        this._express = express
+        this._PORT = PORT
+        this._middlewares = middlewares
+        this._databaseController = databaseController
+        this._router = router
     }
 
     private listen() {
-        this.express.listen(this.port, () => {
+        this._express.listen(this._PORT, () => {
             console.log("Look mom, it's alive!! :)")
         })
+    }
+    
+    public init() {
+        this._middlewares.setupMiddlewares()
+        this._router.setupRouting()
+        this._databaseController.connectDatabase()
+        this.listen()
     }
 }

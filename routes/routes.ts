@@ -1,20 +1,23 @@
 import express from "express"
 import { IRouter } from "../interfaces/interfaces"
-import { CDatabase } from "../controllers/database.controller"
+import { IDatabase } from "../interfaces/interfaces"
 
 export class Router implements IRouter {
-    private express: express.Application
-    private databaseController: CDatabase
+    private _express: express.Application
+    private _databaseController: IDatabase
 
-    constructor (express: express.Application, databaseController: CDatabase) {
-        this.express = express
-        this.databaseController = databaseController
+    constructor (
+        express: express.Application,
+        databaseController: IDatabase
+    ) {
+        this._express = express
+        this._databaseController = databaseController
     }
 
     setupRouting() {
-        this.express.get("/", async (_req, res) => {
+        this._express.get("/", async (_req, res) => {
             try {
-                const movies = await this.databaseController.getMovies()
+                const movies = await this._databaseController.getMovies()
                 if (movies != null) {
                     res.json(movies)
                 } else {
@@ -25,7 +28,7 @@ export class Router implements IRouter {
             }
         })
 
-        this.express.get("/keepalive", (_req, res) => {
+        this._express.get("/keepalive", (_req, res) => {
             res.send("Look mom,  i did it!!")
         })
     }
