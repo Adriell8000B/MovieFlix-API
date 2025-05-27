@@ -1,0 +1,26 @@
+{
+    "name": "movieflix-api",
+    "version": "1.0.0",
+    "license": "ISC",
+    "author": "Adriell8000B",
+    "type": "commonjs",
+    "main": "index.ts",
+    "scripts": {
+        "dev": "npx ts-node index.ts",
+        "build": "npx tsc",
+        "start": "node dist/index.js"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.18",
+        "@types/express": "^5.0.2",
+        "prisma": "^6.8.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.8.2",
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "helmet": "^8.1.0"
+    }
+}
