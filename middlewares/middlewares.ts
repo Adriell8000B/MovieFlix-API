@@ -14,9 +14,12 @@ export class MiddlewareApplier implements IMiddlewaresApplier{
   }
 
   public SetupMiddlewares(): void {
-    this._middlewares.forEach((middleware) => {
+    try {
+      this._middlewares.forEach((middleware) => {
       this._express.use(middleware)
-    })
-    console.log("Middlewares loaded!")
+      })
+    } catch(error: unknown) {
+      console.log("SetupMiddlewares(): ", error)
+    }
   }
 }
