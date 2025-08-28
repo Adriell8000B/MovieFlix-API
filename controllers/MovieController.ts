@@ -5,9 +5,7 @@ import { IMovieController } from "../interfaces/controllers-interface"
 export class MovieController implements IMovieController {
   private readonly _movie_repository: IMovieRepository
 
-  constructor(
-    movie_repository: IMovieRepository
-  ) {
+  constructor(movie_repository: IMovieRepository) {
     this._movie_repository = movie_repository
   }
 
