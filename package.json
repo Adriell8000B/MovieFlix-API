@@ -1,0 +1,34 @@
+{
+  "name": "movieflix-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tsx index.ts",
+    "start": "node dist/index.js",
+    "build": "npx tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adriell8000B/MovieFlix-API.git"
+  },
+  "keywords": [],
+  "author": "Adriell8000B",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Adriell8000B/MovieFlix-API/issues"
+  },
+  "homepage": "https://github.com/Adriell8000B/MovieFlix-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mongoose": "^8.19.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.5",
+    "@types/mongoose": "^5.11.96",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,54 @@
+# ----------------------------------
+# Compiled/Generated Files
+# ----------------------------------
+# Node.js applications generate these files during build/transpilation.
+# They should not be committed to version control.
+/dist
+/build
+*.js.map
+*.d.ts
+*.tsbuildinfo
+
+# Ignore all .js files, but exclude the config files that are necessary
+# like server.config.js or next.config.js (if applicable)
+*.js
+!/webpack.config.js
+!/rollup.config.js
+!/babel.config.js
+!/jest.config.js
+!/next.config.js
+
+# ----------------------------------
+# Dependencies
+# ----------------------------------
+# The 'node_modules' folder contains all project dependencies and can be
+# restored via 'npm install'.
+/node_modules
+
+# ----------------------------------
+# Runtime / OS Files
+# ----------------------------------
+# Logs, caches, and system-specific files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+.DS_Store # macOS system files
+Thumbs.db # Windows thumbnail caches
+
+# ----------------------------------
+# Environment Variables
+# ----------------------------------
+# Crucial for security, environment files should NEVER be committed.
+.env
+.env.local
+.env.*.local
+
+# ----------------------------------
+# IDE and Tooling
+# ----------------------------------
+# Ignore IDE-specific configuration folders (like VS Code)
+.vscode/*
+!.vscode/settings.json # Optional: If you want to share workspace settings
+!.vscode/extensions.json # Optional: If you want to share recommended extensions
+!.vscode/launch.json # Optional: If you want to share debug configurations
