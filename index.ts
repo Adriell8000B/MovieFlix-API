@@ -21,7 +21,7 @@ const _Middlewares = new Middlewares(_Express, [
 	express.urlencoded(),
 	express.json(),
 	cors({
-		origin: process.env.ORIGIN,
+		origin: "*",
 		methods: "GET, POST",
 		credentials: true
 	})

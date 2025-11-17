@@ -25,6 +25,11 @@ class Router {
 		this._express.get("/api/movies", (req, res) => {
 			return this._movieController.GetMovies(req, res)
 		})
+
+		this._express.get("/api/movies/search", (req, res) => {
+			const movie_name:string = req.body.movie_name
+			return this._movieController.GetMovie(req, res, movie_name)
+		})
 	}
 }
 
