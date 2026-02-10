@@ -20,8 +20,8 @@ export class MovieController implements IMovieController {
 	public async GetMovies(_req: express.Request, res: express.Response) {
 		const [response, error] = await HandlePromise(this._movie_repository.RetrieveMovies())
 
-		if(error) {
-			res.status(500).json({error: "Internal server error!"})
+		if (error) {
+			return res.status(500).json({ error: "Internal server error!" })
 		}
 
 		return res.status(200).json(response)
