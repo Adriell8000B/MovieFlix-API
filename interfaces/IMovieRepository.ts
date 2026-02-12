@@ -1,5 +1,5 @@
-import { IMovie } from "./IMovie";
+import { IMovie } from "../entities/IMovie";
 
 export interface IMovieRepository {
-	RetrieveMovies(): Promise<IMovie[] | null>
+	RetrieveMovies(): any
 }
