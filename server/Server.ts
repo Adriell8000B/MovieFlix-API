@@ -1,6 +1,6 @@
 import express from "express"
 import { IRouter } from "../interfaces/IRouter"
-import { IDatabaseService } from "../interfaces/IDatabaseService"
+import { ISupabaseProvider } from "../interfaces/ISupabaseProvider"
 import { IMiddlewaresManager } from "../interfaces/IMiddlewaresManager"
 
 export class Server {
@@ -11,7 +11,7 @@ export class Server {
 		private readonly _express: express.Application,
 		private readonly _router: IRouter,
 		private readonly _middlewares_manager: IMiddlewaresManager,
-		private readonly _database_service: IDatabaseService
+		private readonly _database_service: ISupabaseProvider
 	) { }
 
 	public static GetInstance(
@@ -19,7 +19,7 @@ export class Server {
 		_express: express.Application,
 		_router: IRouter,
 		_middlewares_manager: IMiddlewaresManager,
-		_database_service: IDatabaseService
+		_database_service: ISupabaseProvider
 	) {
 		if (!this._instance) {
 			this._instance = new Server(
@@ -35,7 +35,7 @@ export class Server {
 	}
 
 	private setup(): void {
-		this._database_service.SetupDatabaseService()
+		this._database_service.SetupSupabaseProvider()
 		this._middlewares_manager.SetupMiddlewares()
 		this._router.SetupRoutes()
 	}

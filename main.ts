@@ -4,17 +4,17 @@ import { Server } from "./server/Server"
 import { Router } from "./router/Router"
 import { MiddlewaresManager } from "./middlewares/MiddlewaresManager"
 import { MovieController } from "./controllers/MovieController"
-import { DatabaseService } from "./services/DatabaseService"
+import { SupabaseProvider } from "./providers/SupabaseProvider"
 import { MovieRepository } from "./repositories/MovieRepository"
-import MovieModel from "./models/MovieModel"
-import mongoose from "mongoose"
 import { GetEnv } from "./utils/GetEnv"
+import { SupabaseFactory } from "./factories/SupabaseFactory"
+import { SetupEnv } from "./utils/SetupEnv"
 
 const Express = express()
-const Mongoose = mongoose
+const Supabase = SupabaseFactory.Create()
 const PORT = Number(GetEnv("PORT"))
 
-const movie_repository = MovieRepository.GetInstance(MovieModel)
+const movie_repository = MovieRepository.GetInstance(Supabase)
 const movie_controller = MovieController.GetInstance(movie_repository)
 const router = Router.GetInstance(Express, movie_controller)
 const middlewares_manager = MiddlewaresManager.GetInstance(Express, [
@@ -22,7 +22,7 @@ const middlewares_manager = MiddlewaresManager.GetInstance(Express, [
 	express.urlencoded({extended: true}),
 	cors({})
 ])
-const database_service = DatabaseService.GetInstance(Mongoose)
+const database_service = SupabaseProvider.GetInstance(Supabase)
 const server = Server.GetInstance(PORT, Express, router, middlewares_manager,database_service)
 
 server.Init()
