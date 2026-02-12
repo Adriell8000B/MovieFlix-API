@@ -8,7 +8,6 @@ import { SupabaseProvider } from "./providers/SupabaseProvider"
 import { MovieRepository } from "./repositories/MovieRepository"
 import { GetEnv } from "./utils/GetEnv"
 import { SupabaseFactory } from "./factories/SupabaseFactory"
-import { SetupEnv } from "./utils/SetupEnv"
 
 const Express = express()
 const Supabase = SupabaseFactory.Create()
