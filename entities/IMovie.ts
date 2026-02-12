@@ -1,5 +1,3 @@
-import { Document } from "mongoose"
-
 export interface IMovie extends Document {
 	id?: string
 	movie_banner: string
