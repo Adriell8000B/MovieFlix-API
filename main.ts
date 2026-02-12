@@ -19,7 +19,11 @@ const router = Router.GetInstance(Express, movie_controller)
 const middlewares_manager = MiddlewaresManager.GetInstance(Express, [
 	express.json(),
 	express.urlencoded({extended: true}),
-	cors({})
+	cors({
+		allowedHeaders: GetEnv("CORS_ALLOWED_HEADERS"),
+		methods: GetEnv("CORS_METHODS"),
+		origin: GetEnv("CORS_ORIGIN")
+	})
 ])
 const database_service = SupabaseProvider.GetInstance(Supabase)
 const server = Server.GetInstance(PORT, Express, router, middlewares_manager,database_service)
